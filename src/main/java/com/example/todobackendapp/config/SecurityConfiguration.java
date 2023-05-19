@@ -23,7 +23,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().
                 disable().
-                authorizeHttpRequests().requestMatchers("https://localhost:3000/").permitAll().
+                authorizeHttpRequests().requestMatchers("/api/custom-auth/**").permitAll().
                 anyRequest().authenticated().and().sessionManagement().
                 sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().
                 authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
