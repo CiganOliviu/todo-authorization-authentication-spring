@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.services.JwtService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

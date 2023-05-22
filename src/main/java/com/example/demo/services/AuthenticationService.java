@@ -1,6 +1,8 @@
-package com.example.demo.controllers;
+package com.example.demo.services;
 
-import com.example.demo.config.JwtService;
+import com.example.demo.types.AuthenticationRequest;
+import com.example.demo.types.AuthenticationResponse;
+import com.example.demo.types.RegisterRequest;
 import com.example.demo.models.Role;
 import com.example.demo.models.User;
 import com.example.demo.models.UserRepository;
