@@ -45,11 +45,13 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = repository.findByEmail(request.getEmail())
-                .orElseThrow();
+        var user = repository.findByEmail(request.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
+        var email = user.getEmail();
+
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .email(email)
                 .build();
     }
 }
