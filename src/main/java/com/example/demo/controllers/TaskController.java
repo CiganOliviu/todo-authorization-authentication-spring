@@ -3,10 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.dtos.TaskDto;
 import com.example.demo.services.TaskService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,20 @@ public class TaskController {
     @GetMapping("/{id}")
     public ResponseEntity<TaskDto> getTaskById(@PathVariable Integer id) {
         return ResponseEntity.ok(service.getTaskById(Long.valueOf(id)));
+    }
+
+    @PostMapping
+    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) {
+        return ResponseEntity.ok(service.createTask(taskDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TaskDto> updateTask(@PathVariable Integer id, @RequestBody TaskDto taskDto) {
+        return ResponseEntity.ok(service.updateTask(Long.valueOf(id), taskDto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<TaskDto> deleteTask(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.removeTask(Long.valueOf(id)));
     }
 }
