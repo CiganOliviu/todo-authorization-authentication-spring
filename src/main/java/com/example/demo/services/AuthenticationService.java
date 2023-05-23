@@ -5,7 +5,7 @@ import com.example.demo.types.AuthenticationResponse;
 import com.example.demo.types.RegisterRequest;
 import com.example.demo.models.Role;
 import com.example.demo.models.User;
-import com.example.demo.models.UserRepository;
+import com.example.demo.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
