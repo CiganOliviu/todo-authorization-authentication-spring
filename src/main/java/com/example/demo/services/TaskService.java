@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.dtos.TaskDto;
+import com.example.demo.exceptions.OperationException;
 import com.example.demo.models.Task;
 import com.example.demo.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,15 @@ public class TaskService {
                 .name(task.getName()).estimation(task.getEstimation()).build()));
 
         return taskDtos;
+    }
+
+    public TaskDto getTaskById(Long id) {
+        Task task = taskRepository.findById(id).orElseThrow(() -> new OperationException("Task does not exist"));
+
+        return TaskDto.builder()
+                .id(Math.toIntExact(task.getId()))
+                .name(task.getName())
+                .estimation(task.getEstimation())
+                .build();
     }
 }
