@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.persistence.Id;
 import java.util.Collection;
 
 @Entity
@@ -17,7 +18,7 @@ import java.util.Collection;
 @AllArgsConstructor
 @Table(name = "_user")
 public class User implements UserDetails {
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
     private String firstname;
