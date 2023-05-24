@@ -24,7 +24,12 @@ public class TaskService {
         List<TaskDto> taskDtos = new ArrayList<>();
 
         tasks.forEach(task -> taskDtos.add(TaskDto.builder().id(Math.toIntExact(task.getId()))
-                .name(task.getName()).estimation(task.getEstimation()).build()));
+                .name(task.getName())
+                .estimation(task.getEstimation())
+                .description(task.getDescription())
+                .status(task.getStatus())
+                .type(task.getType())
+                .build()));
 
         return taskDtos;
     }
@@ -36,6 +41,9 @@ public class TaskService {
                 .id(Math.toIntExact(task.getId()))
                 .name(task.getName())
                 .estimation(task.getEstimation())
+                .description(task.getDescription())
+                .status(task.getStatus())
+                .type(task.getType())
                 .build();
     }
 
@@ -43,6 +51,9 @@ public class TaskService {
         Task task = Task.builder()
                 .name(taskDto.getName())
                 .estimation(taskDto.getEstimation())
+                .description(taskDto.getDescription())
+                .status(taskDto.getStatus())
+                .type(taskDto.getType())
                 .build();
 
         taskRepository.save(task);
@@ -56,11 +67,17 @@ public class TaskService {
 
         task.setName(taskDto.getName() != null ? taskDto.getName() : task.getName());
         task.setEstimation(taskDto.getEstimation() != null ? taskDto.getEstimation() : task.getEstimation());
+        task.setDescription(taskDto.getDescription() != null ? taskDto.getDescription() : task.getDescription());
+        task.setStatus(taskDto.getStatus() != null ? taskDto.getStatus() : task.getStatus());
+        task.setType(taskDto.getType() != null ? taskDto.getType() : task.getType());
         taskRepository.save(task);
 
         taskDto.setId(Math.toIntExact(task.getId()));
         taskDto.setName(task.getName());
         taskDto.setEstimation(task.getEstimation());
+        taskDto.setDescription(task.getDescription());
+        taskDto.setStatus(task.getStatus());
+        taskDto.setType(task.getType());
 
         return taskDto;
     }
@@ -72,6 +89,10 @@ public class TaskService {
         return TaskDto.builder()
                 .id(Math.toIntExact(task.getId()))
                 .name(task.getName())
-                .estimation(task.getEstimation()).build();
+                .estimation(task.getEstimation())
+                .description(task.getDescription())
+                .status(task.getStatus())
+                .type(task.getType())
+                .build();
     }
 }
